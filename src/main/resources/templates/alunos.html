@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>UEG - Desenvolvimento Web 2025: Alunos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <style>
+        .lilac-border {
+            border: 1px solid #D1C4E9;
+            /* Cor lilás suave */
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .lilac-border:hover {
+            background-color: #D1C4E9;
+            color: white;
+        }
+
+        .button-container {
+            text-align: center;
+            /* Centraliza os botões */
+            padding: 20px 0;
+            /* Ajuste de espaçamento */
+        }
+
+        .nav-item {
+            display: inline-block;
+            margin-right: 10px;
+            /* Espaçamento entre os botões */
+        }
+
+        .btn-small {
+            width: 100%;
+            /* Faz os botões ocuparem toda a largura disponível */
+            display: flex;
+            justify-content: center;
+            /* Centraliza o texto dentro do botão */
+        }
+
+        /* Aumentar o espaço entre os botões "Atualizar" e "Excluir" */
+        .actions li {
+            margin-right: 20px;
+            /* Aumenta o espaço entre os botões */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h2 class="header center purple-text custom-header">
+                Lista de alunos
+            </h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+
+            <div class="button-container"
+                style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+                <a href="/" class="lilac-border btn"
+                    style="display: flex; align-items: center; justify-content: center; height: 40px;">
+                    Início
+                </a>
+
+                <a href="/alunos/create" class="lilac-border btn"
+                    style="display: flex; align-items: center; justify-content: center; height: 40px;">
+                    Novo Aluno
+                </a>
+            </div>
+
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Matrícula</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="aluno : ${alunos}">
+                        <td th:text="${aluno.nome}"></td>
+                        <td th:text="${aluno.email}"></td>
+                        <td>
+                            <ul class="actions"
+                                style="display: flex; flex-direction: column; gap: 10px; padding-left: 0; list-style: none;">
+                                <li>
+                                    <a class="waves-effect waves-light btn-small lilac-border"
+                                        th:href="@{'/alunos/update/' + ${aluno.id}}"
+                                        style="display: flex; align-items: center; justify-content: center; height: 36px;">
+                                        ATUALIZAR
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="waves-effect waves-light btn-small lilac-border red"
+                                        th:href="@{'/alunos/delete/' + ${aluno.id}}"
+                                        style="display: flex; align-items: center; justify-content: center; height: 36px;">
+                                        EXCLUIR
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

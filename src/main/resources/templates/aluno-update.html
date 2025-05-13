@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <title>UEG - Desenvolvimento Web 2025: Aluno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h2 class="header center purple-text custom-header">
+                Atualização cadastro de alunos
+            </h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <form action="/alunos/update" method="post">
+                <div class="input-field col m6 s12">
+                    <input type="hidden" name="id" th:value="${id}">
+                    <label>Nome: </label>
+                    <input type="text" name="nome" th:value="${aluno.nome}">
+                </div>
+
+                <div class="input-field col m6 s12">
+
+                    <label>Email</label>
+                    <input type="text" name="email" th:value="${aluno.email}">
+                </div>
+
+               <button type="submit" class="waves-effect waves-light btn-small purple">
+                 <i class="material-icons left">Salvar</i>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
